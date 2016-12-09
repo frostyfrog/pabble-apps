@@ -1,0 +1,24 @@
+# Supfile
+---
+version: 0.5
+
+networks:
+  production:
+    hosts:
+      - pebble.frostyfrog.net
+
+targets:
+  deploy:
+    - build
+    - upload
+
+commands:
+  build:
+    desc: Build Pebble App Store
+    local: go build .
+  upload:
+    desc: Upload Pebble App Store
+    upload:
+    - src: ./pabble-apps
+      dst: /home/frosty/tmp/
+# vim: set ts=2 sw=2 ai et :
